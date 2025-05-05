@@ -1,0 +1,97 @@
+---
+title: Modular Arithmetic
+description: Understanding modular arithmetic and its applications in blockchain technology
+---
+
+# Modular Arithmetic in Blockchain
+
+Modular arithmetic is a fundamental mathematical concept that plays a crucial role in blockchain technology and cryptography. This guide will help you understand the basics and their practical applications.
+
+## What is Modular Arithmetic?
+
+Modular arithmetic is a system of arithmetic for integers where numbers "wrap around" after reaching a certain value - the modulus. Think of it like a clock, where after 12, we go back to 1.
+
+```math
+In modular arithmetic with modulus n, we write:
+a ≡ b (mod n)
+```
+
+This means that when we divide a by n, the remainder is b.
+
+## Key Concepts
+
+### 1. Clock Arithmetic Example
+- On a 12-hour clock, 3 hours after 11 o'clock is 2 o'clock
+- In modular arithmetic: 11 + 3 ≡ 2 (mod 12)
+
+### 2. Properties
+- Closure: The result of any operation stays within the set
+- Associative: (a + b) + c ≡ a + (b + c) (mod n)
+- Commutative: a + b ≡ b + a (mod n)
+- Distributive: a × (b + c) ≡ (a × b + a × c) (mod n)
+
+## Applications in Blockchain
+
+Modular arithmetic is essential in blockchain technology for several reasons:
+
+1. **Cryptographic Hash Functions**
+   - Hash functions use modular arithmetic operations
+   - Ensures fixed-size output regardless of input size
+
+2. **Digital Signatures**
+   - Used in the mathematics behind ECDSA (Elliptic Curve Digital Signature Algorithm)
+   - Key to securing transactions on the blockchain
+
+3. **Address Generation**
+   - Public addresses are derived using modular operations
+   - Helps in creating fixed-length addresses
+
+## Practical Examples
+
+### Example 1: Simple Modular Addition
+```javascript
+function modAdd(a, b, mod) {
+    return ((a % mod) + (b % mod)) % mod;
+}
+
+// Example: (15 + 7) mod 10 = 2
+console.log(modAdd(15, 7, 10)); // Output: 2
+```
+
+### Example 2: Modular Multiplication
+```javascript
+function modMultiply(a, b, mod) {
+    return ((a % mod) * (b % mod)) % mod;
+}
+
+// Example: (8 * 7) mod 12 = 8
+console.log(modMultiply(8, 7, 12)); // Output: 8
+```
+
+## Security Implications
+
+Understanding modular arithmetic is crucial for:
+- Analyzing cryptographic protocols
+- Implementing secure hash functions
+- Working with digital signatures
+- Developing smart contracts
+
+## Best Practices
+
+1. Always use appropriate data types that can handle large numbers
+2. Be aware of potential overflow issues
+3. Use established libraries for cryptographic operations
+4. Test with various input sizes and edge cases
+
+## Additional Resources
+
+- [Khan Academy: Modular Arithmetic](https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic)
+- [Introduction to Mathematical Cryptography](https://www.springer.com/gp/book/9781441926746)
+- [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) (for advanced mathematical concepts)
+
+## Next Steps
+
+Now that you understand modular arithmetic, you're ready to learn about:
+- [Hash Functions](/docs/getting-started/blockchain-basics/math-basics/hash-functions)
+- [Public Key Cryptography](/docs/getting-started/blockchain-basics/math-basics/public-key)
+- [Digital Signatures](/docs/getting-started/blockchain-basics/math-basics/signatures) 

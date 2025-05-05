@@ -1,0 +1,104 @@
+---
+title: Account-Based Model
+description: Understanding Ethereum's state-based account system
+---
+
+# Account-Based Model
+
+## Overview
+
+Ethereum's account-based model represents a fundamental shift from Bitcoin's UTXO system, introducing a more flexible and programmable approach to blockchain state management.
+
+## Types of Accounts
+
+### Externally Owned Accounts (EOAs)
+- Controlled by private keys
+- Can initiate transactions
+- Hold ETH balance
+- No associated code
+- Nonce tracks transaction count
+
+### Contract Accounts
+- Controlled by code
+- Can't initiate transactions
+- Hold ETH balance
+- Contains contract code
+- Has associated storage
+
+## State Management
+
+### Global State
+- Mapping of addresses to account states
+- Updated with each block
+- Includes all account balances and contract storage
+- Maintained by all full nodes
+
+### Account State
+- Nonce (transaction count/contract creation count)
+- Balance (in Wei)
+- Storage root (for contract accounts)
+- Code hash (for contract accounts)
+
+## Key Features
+
+### Nonce System
+- Prevents transaction replay attacks
+- Ensures transaction ordering
+- Increments with each transaction
+- Different meaning for EOAs vs contracts
+
+### Storage Model
+- Key-value store for contracts
+- 256-bit to 256-bit mapping
+- Persistent between contract calls
+- Cost of storage reflected in gas fees
+
+## Advantages Over UTXO
+
+### Simplicity
+- Direct balance tracking
+- Easier to understand
+- More intuitive for developers
+- Natural fit for smart contracts
+
+### Programmability
+- Native support for complex logic
+- Direct state access
+- Efficient contract interactions
+- Stateful programming model
+
+### Efficiency
+- Reduced transaction size
+- Simpler balance updates
+- Better for token transfers
+- Easier to track state
+
+## Practical Applications
+
+### Smart Contract Integration
+- Direct state access
+- Atomic operations
+- Complex state transitions
+- Multi-step transactions
+
+### Token Standards
+- Natural fit for ERC-20
+- Simple balance tracking
+- Efficient transfers
+- Built-in state management
+
+## Trade-offs
+
+### Privacy
+- More transparent balances
+- Less transaction privacy
+- Easier to track flows
+- Clear state transitions
+
+### Scalability
+- State growth challenges
+- Storage costs
+- Node requirements
+- Sync considerations
+
+The account-based model forms the foundation of Ethereum's ability to support complex smart contracts and decentralized applications, making it a crucial innovation in blockchain technology. 
