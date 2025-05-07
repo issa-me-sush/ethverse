@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, Menu } from 'lucide-react';
 import clsx from 'clsx';
 import { cn } from '@/lib/utils';
 
+
 type SidebarContextType = {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
@@ -280,6 +281,10 @@ interface PageType {
   pages?: PageType[];
 }
 
+// interface SidebarItemProps extends React.PropsWithChildren {
+//   href?: string;
+// }
+
 interface SidebarMenuItemProps {
   icon?: React.ReactNode;
   label: string;
@@ -366,34 +371,25 @@ export function SidebarMenuItem({
   isActive: propIsActive,
   defaultOpen = false,
   alwaysOpen = false,
-  isCollapsable = false,
-  pages,
+  isCollapsable = true,
+  pages = [],
 }: SidebarMenuItemProps) {
   const pathname = usePathname();
   const { isOpen } = useSidebar();
-  const [isExpanded, setIsExpanded] = React.useState(defaultOpen);
+  const [isExpanded, setIsExpanded] = React.useState(defaultOpen || alwaysOpen);
 
-  // Check if current path matches this item or any of its children
+  const isCurrentPath =
+    href === pathname ||
+    pages.some(page => pathname.startsWith(page.href));
+
   const isActive =
-    propIsActive ??
-    (href
-      ? pathname === href
-      : pages?.some((page) => 
-          pathname === page.href || 
-          page.pages?.some(subpage => pathname === subpage.href)
-        ) ||
-        React.Children.toArray(children).some((child) => {
-          if (React.isValidElement(child) && 'href' in child.props) {
-            return pathname.startsWith(child.props.href);
-          }
-          return false;
-        }));
+    propIsActive ?? isCurrentPath;
 
   const hasChildren = Boolean(pages?.length) || React.Children.count(children) > 0;
   const showExpanded = alwaysOpen || isExpanded;
 
   const handleClick = () => {
-    if (hasChildren) {
+    if (hasChildren && isCollapsable) {
       setIsExpanded(!isExpanded);
     }
   };
@@ -415,7 +411,7 @@ export function SidebarMenuItem({
           {icon}
           {isOpen && label}
         </span>
-        {hasChildren && isOpen && (
+        {hasChildren && isOpen && isCollapsable && (
           <ChevronRight
             className={cn(
               'ml-auto h-4 w-4 transition-transform',
@@ -424,7 +420,6 @@ export function SidebarMenuItem({
           />
         )}
       </Link>
-      
       {hasChildren && showExpanded && isOpen && (
         <div className="ml-4 mt-1 space-y-1">
           {pages?.map((page) => (

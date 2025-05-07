@@ -10,7 +10,14 @@ interface Heading {
   level: number;
 }
 
-const Toc = () => {
+interface TocProps {
+  doc: {
+    title: string;
+    url: string;
+  };
+}
+
+const Toc: React.FC<TocProps> = ({  }) => {
   const pathname = usePathname();
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState('');

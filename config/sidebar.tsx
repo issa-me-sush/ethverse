@@ -3,19 +3,20 @@ import { Clock, Rocket, Cog, Globe } from 'lucide-react'
 export type Page = {
   title: string
   href: string
-  pages?: Page[]
 }
 
 export type Section = {
   title: string
   icon?: React.ReactNode
+  defaultOpen?: boolean
   pages: Page[]
 }
 
 export const sidebarNav = [
   {
-    title: 'Pre-Ethereum',
+    title: '🧱 Pre-Ethereum',
     icon: <Clock className="h-5 w-5" />,
+    defaultOpen: true,
     pages: [
       { title: 'Web2 & Centralized Apps', href: '/docs/pre-ethereum/web2' },
       { title: 'Bitcoin Whitepaper', href: '/docs/pre-ethereum/bitcoin-whitepaper' },
@@ -24,18 +25,29 @@ export const sidebarNav = [
     ]
   },
   {
-    title: ' Ethereum Launch Era',
+    title: '🚀 Ethereum Launch Era',
     icon: <Rocket className="h-5 w-5" />,
+    defaultOpen: true,
     pages: [
       { 
         title: 'Ethereum Mainnet', 
         href: '/docs/launch-era/mainnet',
-        pages: [
-          { title: 'Account-Based Model', href: '/docs/launch-era/mainnet/account-model' },
-          { title: 'EVM Execution', href: '/docs/launch-era/mainnet/evm' },
-          { title: 'Smart Contracts', href: '/docs/launch-era/mainnet/smart-contracts' },
-          { title: 'Gas Mechanics', href: '/docs/launch-era/mainnet/gas' }
-        ]
+      },
+      { 
+        title: 'Account-Based Model', 
+        href: '/docs/launch-era/mainnet/account-model' 
+      },
+      { 
+        title: 'EVM Execution', 
+        href: '/docs/launch-era/mainnet/evm' 
+      },
+      { 
+        title: 'Smart Contracts', 
+        href: '/docs/launch-era/mainnet/smart-contracts' 
+      },
+      { 
+        title: 'Gas Mechanics', 
+        href: '/docs/launch-era/mainnet/gas' 
       },
       { title: 'The DAO Fork', href: '/docs/launch-era/dao-fork' },
       { title: 'ICO Boom', href: '/docs/launch-era/ico-boom' },
@@ -43,8 +55,9 @@ export const sidebarNav = [
     ]
   },
   {
-    title: 'Ethereum Scaling',
+    title: '⚙️ Ethereum Scaling',
     icon: <Cog className="h-5 w-5" />,
+    defaultOpen: false,
     pages: [
       { title: 'Beacon Chain Genesis', href: '/docs/scaling/beacon-chain' },
       { title: 'EIP-1559', href: '/docs/scaling/eip-1559' },
@@ -54,8 +67,9 @@ export const sidebarNav = [
     ]
   },
   {
-    title: 'Beyond Ethereum',
+    title: '🪐 Beyond Ethereum',
     icon: <Globe className="h-5 w-5" />,
+    defaultOpen: false,
     pages: [
       { title: 'Modular DA Stack', href: '/docs/beyond/modular-da' },
       { title: 'Verkle Tries', href: '/docs/beyond/verkle-tries' },

@@ -1,0 +1,115 @@
+---
+title: EVM Execution
+description: Deep dive into the Ethereum Virtual Machine and its execution model
+---
+
+# EVM Execution
+
+## The Virtual Machine
+
+The Ethereum Virtual Machine (EVM) is a quasi-Turing complete state machine and the runtime environment for Ethereum smart contracts.
+
+## Core Concepts
+
+### Stack-Based Architecture
+- 1024 stack depth limit
+- 256-bit word size
+- Stack-based operations
+- Last-in-first-out (LIFO)
+
+### Memory Model
+- Linear memory array
+- Volatile memory space
+- Byte-addressable
+- Expands in 32-byte words
+
+### Storage Model
+- Persistent state storage
+- Key-value mapping
+- 256-bit to 256-bit pairs
+- Contract-specific storage
+
+## Execution Context
+
+### Transaction Environment
+- Gas remaining
+- Call depth
+- Stack size
+- Program counter
+- Memory size
+
+### Call Data
+- Function selector
+- Input parameters
+- Message value
+- Caller address
+
+## Instruction Set
+
+### Operation Categories
+- Stack operations (PUSH, POP, DUP, SWAP)
+- Arithmetic operations (ADD, MUL, SUB, DIV)
+- Memory operations (MLOAD, MSTORE)
+- Storage operations (SLOAD, SSTORE)
+- Control flow (JUMP, JUMPI)
+- Environmental info (CALLER, CALLVALUE)
+- Block info (NUMBER, TIMESTAMP)
+- Cryptographic operations (SHA3)
+
+### Execution Flow
+- Opcode fetching
+- Instruction execution
+- State updates
+- Gas consumption
+
+## Gas and Execution
+
+### Gas Costs
+- Operation-specific costs
+- Memory expansion costs
+- Storage modification costs
+- Call value transfer costs
+
+### Execution Limits
+- Block gas limit
+- Call depth limit
+- Stack size limit
+- Code size limit
+
+## Security Features
+
+### Determinism
+- Same input, same output
+- No random number generation
+- Timestamp limitations
+- Block-based entropy
+
+### Sandboxing
+- Isolated execution
+- No network access
+- Limited environment access
+- Controlled state access
+
+## Optimization Techniques
+
+### Gas Optimization
+- Efficient opcodes
+- Storage vs. memory trade-offs
+- Batch operations
+- Loop optimization
+
+### Common Patterns
+- View functions
+- Pure functions
+- Modifier usage
+- Event logging
+
+## Future Developments
+
+### EVM Evolution
+- EOF format
+- Gas cost adjustments
+- New opcodes
+- Performance improvements
+
+The EVM serves as the cornerstone of Ethereum's smart contract functionality, providing a secure and deterministic environment for decentralized computation. 

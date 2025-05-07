@@ -17,10 +17,9 @@ import {
   SidebarFooter,
   SidebarMenuItem,
   SidebarTrigger,
-  SidebarHeaderLogo,
-  SidebarHeaderTitle,
+
   UserAvatar,
-  NestedLink,
+
   useSidebar,
 } from '@/components/sidebar';
 import { Github } from 'lucide-react';
